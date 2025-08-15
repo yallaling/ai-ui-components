@@ -1,0 +1,74 @@
+.btn {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Variants */
+.btn--primary {
+  color: white;
+  background-color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.btn--primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn--secondary {
+  color: #333;
+  background-color: #f8f9fa;
+  border: 2px solid #dee2e6;
+}
+
+.btn--secondary:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.btn--outline {
+  color: #007bff;
+  background-color: transparent;
+  border: 2px solid #007bff;
+}
+
+.btn--outline:hover {
+  color: white;
+  background-color: #007bff;
+}
+
+/* Sizes */
+.btn--small {
+  font-size: 12px;
+  padding: 8px 16px;
+}
+
+.btn--medium {
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+.btn--large {
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+/* States */
+.btn--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn--disabled:hover {
+  background-color: inherit;
+  border-color: inherit;
+  color: inherit;
+}
