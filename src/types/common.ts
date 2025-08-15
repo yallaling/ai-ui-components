@@ -1,6 +1,7 @@
 /**
  * Common type definitions
  */
+import React from 'react';
 
 export type Size = 'small' | 'medium' | 'large';
 

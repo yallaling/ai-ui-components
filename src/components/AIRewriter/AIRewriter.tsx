@@ -385,8 +385,8 @@ export default function AIRewriter({
   };
 
   return (
-    <div 
-      className={`ai-rewriter ${className}`} 
+    <div
+      className={`ai-rewriter ${className}`}
       data-testid={testId}
       style={containerStyle}
     >

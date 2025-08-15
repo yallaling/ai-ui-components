@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseComponentProps } from '../../types/common';
 import { AILanguageDetection } from '../../types/chrome-ai';
 

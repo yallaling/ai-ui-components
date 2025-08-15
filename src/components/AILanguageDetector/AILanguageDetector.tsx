@@ -95,7 +95,9 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
         }
 
         const capabilities = await (
-          self as unknown as { LanguageDetector: { availability: () => Promise<string> } }
+          self as unknown as {
+            LanguageDetector: { availability: () => Promise<string> };
+          }
         ).LanguageDetector.availability();
         setIsSupported(
           capabilities === 'available' || capabilities === 'readily'
@@ -132,13 +134,26 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
     abortControllerRef.current = new AbortController();
 
     try {
-      const session = await (self as unknown as { 
-        LanguageDetector: { 
-          create: (options: { signal: AbortSignal; monitor: (progress: { type: string; loaded: number; total: number }) => void }) => Promise<AILanguageDetectorSession> 
-        } 
-      }).LanguageDetector.create({
+      const session = await (
+        self as unknown as {
+          LanguageDetector: {
+            create: (options: {
+              signal: AbortSignal;
+              monitor: (progress: {
+                type: string;
+                loaded: number;
+                total: number;
+              }) => void;
+            }) => Promise<AILanguageDetectorSession>;
+          };
+        }
+      ).LanguageDetector.create({
         signal: abortControllerRef.current.signal,
-        monitor: (progress: { type: string; loaded: number; total: number }) => {
+        monitor: (progress: {
+          type: string;
+          loaded: number;
+          total: number;
+        }) => {
           if (progress.type === 'download') {
             setIsDownloading(true);
             setDownloadProgress({
@@ -184,17 +199,23 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
 
         // Convert API response format to our format and filter by confidence threshold
         const formattedResults = (results || [])
-          .filter((result: unknown): result is { detectedLanguage?: string; confidence?: number } => 
-            result !== null && typeof result === 'object'
+          .filter(
+            (
+              result: unknown
+            ): result is { detectedLanguage?: string; confidence?: number } =>
+              result !== null && typeof result === 'object'
           )
-          .map((result: { detectedLanguage?: string; confidence?: number }) => ({
-            detectedLanguage: result.detectedLanguage || 'unknown',
-            confidence: result.confidence || 0,
-          }));
+          .map(
+            (result: { detectedLanguage?: string; confidence?: number }) => ({
+              detectedLanguage: result.detectedLanguage || 'unknown',
+              confidence: result.confidence || 0,
+            })
+          );
 
         const filteredResults = formattedResults
           .filter(
-            (detection: AILanguageDetection) => detection.confidence >= confidenceThreshold
+            (detection: AILanguageDetection) =>
+              detection.confidence >= confidenceThreshold
           )
           .slice(0, maxSuggestions);
 

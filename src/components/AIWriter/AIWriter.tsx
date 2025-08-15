@@ -337,7 +337,11 @@ export default function AIWriter({
   }
 
   return (
-    <div className={`ai-writer ${className}`} data-testid={testId} style={containerStyle}>
+    <div
+      className={`ai-writer ${className}`}
+      data-testid={testId}
+      style={containerStyle}
+    >
       {showControls && (
         <div className="ai-writer__controls">
           <div className="ai-writer__control-group">

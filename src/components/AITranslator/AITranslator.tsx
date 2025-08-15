@@ -409,8 +409,8 @@ const AITranslator: React.FC<AITranslatorProps> = ({
   }
 
   return (
-    <div 
-      className={`ai-translator ${className}`} 
+    <div
+      className={`ai-translator ${className}`}
       style={containerStyle}
       {...props}
     >

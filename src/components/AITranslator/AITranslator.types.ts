@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseComponentProps } from '../../types/common';
 
 export interface AITranslatorProps extends BaseComponentProps {

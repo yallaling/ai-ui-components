@@ -390,7 +390,11 @@ const AISummarizer: React.FC<AISummarizerProps> = ({
   };
 
   return (
-    <div className={`ai-summarizer ${className}`} style={containerStyle} {...props}>
+    <div
+      className={`ai-summarizer ${className}`}
+      style={containerStyle}
+      {...props}
+    >
       {showOptions && (
         <div className="ai-summarizer__options">
           <div className="ai-summarizer__option-group">

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { marked } from 'marked';
 import { AIPromptProps } from './AIPrompt.types';
-import { WindowAI } from '../../types/chrome-ai';
 import './AIPrompt.css';
 
 /**

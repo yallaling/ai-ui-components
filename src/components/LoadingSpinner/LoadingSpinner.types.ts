@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface LoadingSpinnerProps {
   /**
    * Size of the spinner
