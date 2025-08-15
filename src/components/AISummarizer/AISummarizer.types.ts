@@ -12,7 +12,7 @@ export interface AISummarizerProps extends BaseComponentProps {
   /**
    * External data to summarize (accepts any type - will be converted to string)
    */
-  data?: any;
+  data?: string | object | number | boolean;
   /**
    * Type of summary to generate
    */
@@ -113,6 +113,6 @@ export interface AISummarizerProps extends BaseComponentProps {
    * Function to trigger summarization externally
    */
   onSummarizerReady?: (
-    summarizeFunction: (data?: any) => Promise<void>
+    summarizeFunction: (data?: string | object | number | boolean) => Promise<void>
   ) => void;
 }
