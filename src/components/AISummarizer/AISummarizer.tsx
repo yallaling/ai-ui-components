@@ -169,7 +169,7 @@ const AISummarizer: React.FC<AISummarizerProps> = ({
     };
 
     checkAvailability();
-  }, []);
+  }, [onError]);
 
   // Create summarization session
   const createSession = useCallback(async () => {
@@ -243,10 +243,14 @@ const AISummarizer: React.FC<AISummarizerProps> = ({
 
           let accumulatedSummary = '';
 
-          while (true) {
+          let reading = true;
+          while (reading) {
             const { done, value } = await reader.read();
 
-            if (done) break;
+            if (done) {
+              reading = false;
+              break;
+            }
 
             accumulatedSummary += value;
             setSummary(accumulatedSummary);

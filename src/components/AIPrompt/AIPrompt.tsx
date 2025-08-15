@@ -169,19 +169,15 @@ const AIPrompt: React.FC<AIPromptProps> = ({
 
     try {
       if (aiModel === 'rewriter' && 'Rewriter' in self) {
-        // Check if Rewriter.availability is a function
-        if (typeof (self as any).Rewriter?.availability !== 'function') {
+        // Check if Rewriter.capabilities is a function
+        if (typeof (self as any).Rewriter?.capabilities !== 'function') {
           throw new Error(
-            'Rewriter API is not properly initialized or availability method is not available'
+            'Rewriter API is not properly initialized or capabilities method is not available'
           );
         }
 
-        // Rewriter API uses availability() method with options
-        const availabilityResult = await (self as any).Rewriter.availability({
-          tone: 'as-is',
-          format: 'plain-text',
-          length: 'as-is',
-        });
+        // Rewriter API uses capabilities() method 
+        const availabilityResult = await (self as any).Rewriter.capabilities();
 
         if (
           availabilityResult === 'readily' ||

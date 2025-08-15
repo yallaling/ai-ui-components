@@ -233,9 +233,13 @@ export default function AIWriter({
           // Fallback to reader approach
           const reader = (stream as ReadableStream).getReader();
           try {
-            while (true) {
+            let reading = true;
+            while (reading) {
               const { done, value } = await reader.read();
-              if (done) break;
+              if (done) {
+                reading = false;
+                break;
+              }
 
               output += value;
               setGeneratedContent(output);
@@ -292,6 +296,7 @@ export default function AIWriter({
     onError,
     onProgressUpdate,
     onStreamingChunk,
+    isLoading,
   ]);
 
   const handleCancel = useCallback(() => {

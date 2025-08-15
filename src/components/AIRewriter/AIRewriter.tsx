@@ -268,9 +268,13 @@ export default function AIRewriter({
           // Fallback to reader approach
           const reader = (stream as ReadableStream).getReader();
           try {
-            while (true) {
+            let reading = true;
+            while (reading) {
               const { done, value } = await reader.read();
-              if (done) break;
+              if (done) {
+                reading = false;
+                break;
+              }
 
               output += value;
               setRewrittenContent(output);
@@ -327,6 +331,7 @@ export default function AIRewriter({
     onError,
     onProgressUpdate,
     onStreamingChunk,
+    isLoading,
   ]);
 
   const handleCancel = useCallback(() => {
