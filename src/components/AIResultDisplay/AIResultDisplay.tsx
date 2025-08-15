@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import toast from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import './AIResultDisplay.css';
 
 export interface AIResultDisplayProps {
