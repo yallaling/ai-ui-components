@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
+  AISummarizerSession,
+} from '../../types/chrome-ai';
+import AIResultDisplay from '../AIResultDisplay/AIResultDisplay';
+import {
   AISummarizerProps,
   SummaryType,
   SummaryFormat,
   SummaryLength,
 } from './AISummarizer.types';
-import {
-  AISummarizerSession,
-  AIModelDownloadProgress,
-} from '../../types/chrome-ai';
-import AIResultDisplay from '../AIResultDisplay/AIResultDisplay';
 import './AISummarizer.css';
 
 /**

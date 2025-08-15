@@ -1,8 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
-  WindowAI,
   AIRewriterSession,
-  AIRewriterOptions,
 } from '../../types/chrome-ai';
 import AIResultDisplay from '../AIResultDisplay/AIResultDisplay';
 import './AIRewriter.css';
@@ -63,7 +61,7 @@ export default function AIRewriter({
   outputLanguage = 'en',
   showControls = true,
   allowStreaming = true,
-  showAdvancedOptions = false,
+  showAdvancedOptions: _showAdvancedOptions = false,
   initialText = '',
   controlsOnly = false,
   externalText = '',
@@ -81,7 +79,7 @@ export default function AIRewriter({
   const [currentTone, setCurrentTone] = useState(tone);
   const [currentFormat, setCurrentFormat] = useState(format);
   const [currentLength, setCurrentLength] = useState(length);
-  const [currentOutputLanguage, setCurrentOutputLanguage] =
+  const [currentOutputLanguage, _setCurrentOutputLanguage] =
     useState(outputLanguage);
   const [isStreaming, setIsStreaming] = useState(false);
 
@@ -346,7 +344,7 @@ export default function AIRewriter({
     setError(null);
   }, []);
 
-  const handleCopyContent = useCallback(() => {
+  const _handleCopyContent = useCallback(() => {
     if (rewrittenContent) {
       navigator.clipboard.writeText(rewrittenContent).catch(err => {
         console.error('Failed to copy content:', err);

@@ -68,64 +68,67 @@ export default function AIResultDisplay({
         <div className="blog-prose prose prose-blue max-w-none text-base leading-7">
           <ReactMarkdown
             components={{
-              pre: ({ node, ...props }) => (
+              pre: ({ node: _node, ...props }) => (
                 <div className="overflow-auto w-full my-4 bg-gray-900 text-gray-100 p-4 rounded-lg">
                   <pre {...props} />
                 </div>
               ),
-              code: ({ node, ...props }) => (
+              code: ({ node: _node, ...props }) => (
                 <code
                   className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-sm"
                   {...props}
                 />
               ),
-              h1: ({ node, ...props }) => (
+              h1: ({ node: _node, ...props }) => (
                 <h1
-                  className="text-3xl font-bold mt-8 mb-4 text-gray-900 border-b border-gray-200 pb-2"
+                  className="text-2xl font-bold text-gray-900 mb-4 mt-6 pb-2 border-b border-gray-200"
                   {...props}
                 />
               ),
-              h2: ({ node, ...props }) => (
+              h2: ({ node: _node, ...props }) => (
                 <h2
-                  className="text-2xl font-bold mt-6 mb-3 text-gray-900"
+                  className="text-xl font-semibold text-gray-800 mb-3 mt-5"
                   {...props}
                 />
               ),
-              h3: ({ node, ...props }) => (
+              h3: ({ node: _node, ...props }) => (
                 <h3
-                  className="text-xl font-bold mt-5 mb-2 text-gray-900"
+                  className="text-lg font-medium text-gray-800 mb-2 mt-4"
                   {...props}
                 />
               ),
-              p: ({ node, ...props }) => (
-                <p className="mb-4 leading-relaxed text-gray-700" {...props} />
+              p: ({ node: _node, ...props }) => (
+                <p className="text-gray-700 mb-4 leading-relaxed" {...props} />
               ),
-              ul: ({ node, ...props }) => (
+              li: ({ node: _node, ...props }) => (
+                <li className="text-gray-700 mb-1" {...props} />
+              ),
+              ul: ({ node: _node, ...props }) => (
                 <ul
-                  className="mb-4 ml-6 list-disc space-y-1 text-gray-700"
+                  className="list-disc list-inside text-gray-700 mb-4 space-y-1"
                   {...props}
                 />
               ),
-              ol: ({ node, ...props }) => (
+              ol: ({ node: _node, ...props }) => (
                 <ol
-                  className="mb-4 ml-6 list-decimal space-y-1 text-gray-700"
+                  className="list-decimal list-inside text-gray-700 mb-4 space-y-1"
                   {...props}
                 />
               ),
-              li: ({ node, ...props }) => (
-                <li className="leading-relaxed" {...props} />
-              ),
-              blockquote: ({ node, ...props }) => (
+              blockquote: ({ node: _node, ...props }) => (
                 <blockquote
-                  className="border-l-4 border-blue-500 pl-4 italic my-4 bg-blue-50 py-2 text-gray-800"
+                  className="border-l-4 border-blue-500 pl-4 italic text-gray-600 mb-4"
                   {...props}
                 />
               ),
-              strong: ({ node, ...props }) => (
-                <strong className="font-semibold text-gray-900" {...props} />
+              a: ({ node: _node, ...props }) => (
+                <a
+                  className="text-blue-600 underline hover:text-blue-800"
+                  {...props}
+                />
               ),
-              em: ({ node, ...props }) => (
-                <em className="italic text-gray-800" {...props} />
+              em: ({ node: _node, ...props }) => (
+                <em className="italic text-gray-600" {...props} />
               ),
             }}
           >

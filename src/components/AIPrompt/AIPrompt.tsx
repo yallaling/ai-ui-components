@@ -25,8 +25,8 @@ const AIPrompt: React.FC<AIPromptProps> = ({
   initialPrompts = [],
   onPromptImproved,
   onError,
-  controlsOnly = false,
-  externalPrompt = '',
+  controlsOnly: _controlsOnly = false,
+  externalPrompt: _externalPrompt = '',
 }) => {
   const [prompt, setPrompt] = useState(initialPrompt);
   const [isImprovingPrompt, setIsImprovingPrompt] = useState(false);
@@ -278,7 +278,7 @@ const AIPrompt: React.FC<AIPromptProps> = ({
           } else if ((self as any).LanguageModel) {
             languageModelAPI = (self as any).LanguageModel;
           }
-        } catch (e) {
+        } catch (_e) {
           console.log('LanguageModel not found in global scope');
         }
 
@@ -343,7 +343,7 @@ const AIPrompt: React.FC<AIPromptProps> = ({
         } else if ((self as any).LanguageModel) {
           languageModelAPI = (self as any).LanguageModel;
         }
-      } catch (e) {
+      } catch (_e) {
         console.log('LanguageModel not found in global scope');
       }
 
@@ -528,7 +528,7 @@ Once the real API is enabled, this component will automatically detect and use t
     textareaRef.current?.focus();
   };
 
-  const insertAtCursor = (text: string) => {
+  const _insertAtCursor = (text: string) => {
     const textarea = textareaRef.current;
     if (!textarea) return;
 

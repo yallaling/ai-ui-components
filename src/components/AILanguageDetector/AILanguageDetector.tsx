@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { AILanguageDetectorProps } from './AILanguageDetector.types';
 import {
   AILanguageDetectorSession,
   AILanguageDetection,
 } from '../../types/chrome-ai';
+import { AILanguageDetectorProps } from './AILanguageDetector.types';
 import './AILanguageDetector.css';
 
 /**

@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { AITranslatorProps } from './AITranslator.types';
 import {
   AITranslatorSession,
-  AIModelDownloadProgress,
 } from '../../types/chrome-ai';
-import AIResultDisplay from '../AIResultDisplay/AIResultDisplay';
+import { AITranslatorProps } from './AITranslator.types';
 import './AITranslator.css';
 
 /**
@@ -25,7 +23,7 @@ const AITranslator: React.FC<AITranslatorProps> = ({
   showOutput = true,
   placeholder = 'Enter text to translate...',
   maxLength = 5000,
-  streaming = false,
+  streaming: _streaming = false,
   onTranslatorReady,
   controlsOnly = false,
   externalText,
@@ -34,9 +32,9 @@ const AITranslator: React.FC<AITranslatorProps> = ({
   height,
   style,
   resizable = true,
-  allowCopy = true,
-  allowDownload = true,
-  downloadFileName = 'translation.md',
+  allowCopy: _allowCopy = true,
+  allowDownload: _allowDownload = true,
+  downloadFileName: _downloadFileName = 'translation.md',
   ...props
 }) => {
   const [inputText, setInputText] = useState(text || '');

@@ -1,8 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
-  WindowAI,
   AIWriterSession,
-  AIWriterOptions,
 } from '../../types/chrome-ai';
 import AIResultDisplay from '../AIResultDisplay/AIResultDisplay';
 import './AIWriter.css';
