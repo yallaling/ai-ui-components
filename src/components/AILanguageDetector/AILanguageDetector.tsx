@@ -3,7 +3,6 @@ import { AILanguageDetectorProps } from './AILanguageDetector.types';
 import {
   AILanguageDetectorSession,
   AILanguageDetection,
-  AIModelDownloadProgress,
 } from '../../types/chrome-ai';
 import './AILanguageDetector.css';
 
@@ -12,19 +11,24 @@ import './AILanguageDetector.css';
  */
 const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
   text,
-  expectedLanguages = [],
   confidenceThreshold = 0.5,
   autoDetect = false,
   showControls = true,
   maxLength = 2000,
   onDetect,
   onError,
-  onProgress,
   placeholder = 'Enter text to detect language...',
   showConfidence = true,
   maxSuggestions = 3,
   className = '',
-  ...props
+  // Destructure component-specific props that shouldn't be spread to DOM
+  expectedLanguages,
+  onProgress,
+  width,
+  height,
+  style,
+  // Rest of the props for DOM element
+  ...domProps
 }) => {
   const [inputText, setInputText] = useState(text || '');
   const [detections, setDetections] = useState<AILanguageDetection[]>([]);
@@ -91,7 +95,7 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
         }
 
         const capabilities = await (
-          self as any
+          self as unknown as { LanguageDetector: { availability: () => Promise<string> } }
         ).LanguageDetector.availability();
         setIsSupported(
           capabilities === 'available' || capabilities === 'readily'
@@ -113,7 +117,7 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
     };
 
     checkAvailability();
-  }, []);
+  }, [onError]);
 
   // Create detection session
   const createSession = useCallback(async () => {
@@ -128,9 +132,13 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
     abortControllerRef.current = new AbortController();
 
     try {
-      const session = await (self as any).LanguageDetector.create({
+      const session = await (self as unknown as { 
+        LanguageDetector: { 
+          create: (options: { signal: AbortSignal; monitor: (progress: { type: string; loaded: number; total: number }) => void }) => Promise<AILanguageDetectorSession> 
+        } 
+      }).LanguageDetector.create({
         signal: abortControllerRef.current.signal,
-        monitor: (progress: any) => {
+        monitor: (progress: { type: string; loaded: number; total: number }) => {
           if (progress.type === 'download') {
             setIsDownloading(true);
             setDownloadProgress({
@@ -144,17 +152,18 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
       sessionRef.current = session;
       setIsDownloading(false);
       return session;
-    } catch (err: any) {
+    } catch (err: unknown) {
       // If session creation fails due to user gesture requirement, provide helpful error
+      const error = err as Error;
       if (
-        err.message?.includes('user gesture') ||
-        err.message?.includes('requires a user gesture')
+        error.message?.includes('user gesture') ||
+        error.message?.includes('requires a user gesture')
       ) {
         throw new Error(
           'Please click the detect button to download the AI model (user interaction required)'
         );
       }
-      throw err;
+      throw error;
     }
   }, []);
 
@@ -175,15 +184,17 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
 
         // Convert API response format to our format and filter by confidence threshold
         const formattedResults = (results || [])
-          .filter((result: any) => result && typeof result === 'object')
-          .map((result: any) => ({
+          .filter((result: unknown): result is { detectedLanguage?: string; confidence?: number } => 
+            result !== null && typeof result === 'object'
+          )
+          .map((result: { detectedLanguage?: string; confidence?: number }) => ({
             detectedLanguage: result.detectedLanguage || 'unknown',
             confidence: result.confidence || 0,
           }));
 
         const filteredResults = formattedResults
           .filter(
-            (detection: any) => detection.confidence >= confidenceThreshold
+            (detection: AILanguageDetection) => detection.confidence >= confidenceThreshold
           )
           .slice(0, maxSuggestions);
 
@@ -256,7 +267,7 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
     return (
       <div
         className={`ai-language-detector ai-language-detector--unsupported ${className}`}
-        {...props}
+        {...domProps}
       >
         <div className="ai-language-detector__error">
           <div className="ai-language-detector__error-icon">⚠️</div>
@@ -272,7 +283,7 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
   }
 
   return (
-    <div className={`ai-language-detector ${className}`} {...props}>
+    <div className={`ai-language-detector ${className}`} {...domProps}>
       <div className="ai-language-detector__content">
         <div className="ai-language-detector__input-section">
           <div className="ai-language-detector__input-header">

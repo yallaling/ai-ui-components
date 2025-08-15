@@ -118,15 +118,6 @@ const AIPrompt: React.FC<AIPromptProps> = ({
     },
   ];
 
-  useEffect(() => {
-    if (enableAutoComplete && prompt.length > 10) {
-      const debounceTimer = setTimeout(() => {
-        generateSuggestions();
-      }, 500);
-      return () => clearTimeout(debounceTimer);
-    }
-  }, [prompt, enableAutoComplete]);
-
   const generateSuggestions = useCallback(async () => {
     if (!enableAutoComplete) return;
 
@@ -162,6 +153,15 @@ const AIPrompt: React.FC<AIPromptProps> = ({
       console.error('Error generating suggestions:', error);
     }
   }, [prompt, enableAutoComplete]);
+
+  useEffect(() => {
+    if (enableAutoComplete && prompt.length > 10) {
+      const debounceTimer = setTimeout(() => {
+        generateSuggestions();
+      }, 500);
+      return () => clearTimeout(debounceTimer);
+    }
+  }, [prompt, enableAutoComplete, generateSuggestions]);
 
   const improvePrompt = useCallback(async () => {
     if (!showAIAssistance || !prompt.trim()) return;
