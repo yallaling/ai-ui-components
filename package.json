@@ -103,8 +103,8 @@
     "vite": "^7.1.2"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   },
   "dependencies": {
     "@types/marked": "^5.0.2",
