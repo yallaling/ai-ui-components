@@ -33,6 +33,14 @@ module.exports = {
       },
     ],
     'no-unused-vars': 'off', // Turn off base rule as it conflicts with @typescript-eslint rule
+    // Allow 'any' types in Chrome AI components due to experimental API nature
+    '@typescript-eslint/no-explicit-any': [
+      'error',
+      {
+        ignoreRestArgs: true,
+        fixToUnknown: false,
+      },
+    ],
     // React rules
     'react/react-in-jsx-scope': 'off', // Not needed in React 17+
     'react/prop-types': 'off', // Using TypeScript instead

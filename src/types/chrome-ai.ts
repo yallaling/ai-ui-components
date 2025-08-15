@@ -227,6 +227,15 @@ declare global {
     ai?: WindowAI;
   }
 
+  interface WorkerGlobalScope {
+    LanguageModel: AILanguageModel;
+    Translator: AITranslator;
+    LanguageDetector: AILanguageDetector;
+    Summarizer: AISummarizer;
+    Writer: AIWriter;
+    Rewriter: AIRewriter;
+  }
+
   // Chrome AI APIs available on self/globalThis
   const LanguageModel: AILanguageModel;
   const Translator: AITranslator;
@@ -235,3 +244,13 @@ declare global {
   const Writer: AIWriter;
   const Rewriter: AIRewriter;
 }
+
+// Helper type for Chrome AI global access
+export type ChromeAIGlobal = typeof globalThis & {
+  LanguageModel: AILanguageModel;
+  Translator: AITranslator;
+  LanguageDetector: AILanguageDetector;
+  Summarizer: AISummarizer;
+  Writer: AIWriter;
+  Rewriter: AIRewriter;
+};

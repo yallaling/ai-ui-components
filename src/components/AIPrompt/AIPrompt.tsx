@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Chrome AI APIs are experimental and require 'any' types for global access
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { marked } from 'marked';
 import { AIPromptProps } from './AIPrompt.types';
@@ -170,6 +172,7 @@ const AIPrompt: React.FC<AIPromptProps> = ({
     try {
       if (aiModel === 'rewriter' && 'Rewriter' in self) {
         // Check if Rewriter.capabilities is a function
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if (typeof (self as any).Rewriter?.capabilities !== 'function') {
           throw new Error(
             'Rewriter API is not properly initialized or capabilities method is not available'
@@ -177,6 +180,7 @@ const AIPrompt: React.FC<AIPromptProps> = ({
         }
 
         // Rewriter API uses capabilities() method 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const availabilityResult = await (self as any).Rewriter.capabilities();
 
         if (

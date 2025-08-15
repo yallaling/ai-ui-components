@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Chrome AI APIs are experimental and require 'any' types for global access
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   AISummarizerSession,
