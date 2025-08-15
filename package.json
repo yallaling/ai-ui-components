@@ -46,11 +46,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ai-ui-components.git"
+    "url": "https://github.com/yallaling/ai-ui-components.git"
   },
-  "homepage": "https://github.com/yourusername/ai-ui-components#readme",
+  "homepage": "https://yallaling.github.io/ai-ui-components/",
   "bugs": {
-    "url": "https://github.com/yourusername/ai-ui-components/issues"
+    "url": "https://github.com/yallaling/ai-ui-components/issues"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

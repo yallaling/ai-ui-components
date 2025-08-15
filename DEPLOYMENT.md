@@ -37,7 +37,7 @@ vercel --prod storybook-static
 #### Option C: GitHub Pages (Automated)
 1. Push your code to GitHub
 2. The GitHub Action will automatically deploy on push to main/master
-3. Access your docs at: `https://yourusername.github.io/ai-ui-components`
+3. Access your docs at: `https://yallaling.github.io/ai-ui-components`
 
 ### 2. 📦 NPM Package
 
@@ -145,11 +145,11 @@ Before publishing to NPM, update these fields:
   "author": "Your Name <your.email@example.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/your-repo.git"
+    "url": "https://github.com/yallaling/ai-ui-components.git"
   },
-  "homepage": "https://yourusername.github.io/your-repo",
+  "homepage": "https://yallaling.github.io/ai-ui-components",
   "bugs": {
-    "url": "https://github.com/yourusername/your-repo/issues"
+    "url": "https://github.com/yallaling/ai-ui-components/issues"
   }
 }
 ```
