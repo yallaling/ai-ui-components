@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AIChatProps, Message } from './AIChat.types';
+import { AIChatProps } from './AIChat.types';
 import './AIChat.css';
 
 /**

@@ -22,11 +22,11 @@ const AILanguageDetector: React.FC<AILanguageDetectorProps> = ({
   maxSuggestions = 3,
   className = '',
   // Destructure component-specific props that shouldn't be spread to DOM
-  expectedLanguages,
-  onProgress,
-  width,
-  height,
-  style,
+  expectedLanguages: _expectedLanguages,
+  onProgress: _onProgress,
+  width: _width,
+  height: _height,
+  style: _style,
   // Rest of the props for DOM element
   ...domProps
 }) => {
