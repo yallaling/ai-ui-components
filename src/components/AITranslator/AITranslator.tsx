@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   AITranslatorSession,
-} from '../../types/chrome-ai';
+} from '../../types/web-ai';
 import { AITranslatorProps } from './AITranslator.types';
 import './AITranslator.css';
 

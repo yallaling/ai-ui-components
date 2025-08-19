@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   AILanguageDetectorSession,
   AILanguageDetection,
-} from '../../types/chrome-ai';
+} from '../../types/web-ai';
 import { AILanguageDetectorProps } from './AILanguageDetector.types';
 import './AILanguageDetector.css';
 

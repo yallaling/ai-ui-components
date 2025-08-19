@@ -1,0 +1,57 @@
+{
+  "name": "@yallaling/web-ai-core",
+  "version": "2.1.0",
+  "description": "Framework-agnostic Web AI integration core with secure practices",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "npm run build:types && npm run build:esm && npm run build:cjs",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
+    "build:esm": "tsc --module es2020 --outDir dist/esm --target es2020",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs --target es2017",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "web-ai",
+    "browser-ai",
+    "ai",
+    "translation",
+    "summarization",
+    "core",
+    "framework-agnostic",
+    "secure"
+  ],
+  "author": "Yallaling Goudar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yallaling/web-ai-components.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/yallaling/web-ai-components#readme",
+  "bugs": {
+    "url": "https://github.com/yallaling/web-ai-components/issues"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

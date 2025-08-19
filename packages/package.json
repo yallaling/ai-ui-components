@@ -1,0 +1,38 @@
+{
+  "name": "@yallaling/web-ai-universal",
+  "version": "1.0.0",
+  "description": "Universal Web AI components for all frameworks",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build:core && npm run build:components && npm run build:react",
+    "build:core": "cd core && npm run build",
+    "build:components": "cd components && npm run build", 
+    "build:react": "cd react && npm run build",
+    "clean": "cd core && npm run clean; cd ../components && npm run clean; cd ../react && npm run clean",
+    "dev": "cd components && npm run dev",
+    "test": "echo 'Tests coming soon'",
+    "install:all": "npm install && cd core && npm install && cd ../components && npm install && cd ../react && npm install",
+    "publish:all": "npm run build && cd core && npm publish && cd ../components && npm publish && cd ../react && npm publish"
+  },
+  "keywords": [
+    "chrome-ai",
+    "ai",
+    "web-components",
+    "react",
+    "universal",
+    "translation",
+    "summarization"
+  ],
+  "author": "Yallaling Goudar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yallaling/ai-ui-components.git"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

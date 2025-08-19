@@ -1,0 +1,1506 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "VERSION",
+          "type": {
+            "text": "string"
+          },
+          "default": "'1.0.0'"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AITranslatorElement",
+          "declaration": {
+            "name": "AITranslatorElement",
+            "module": "./components/ai-translator"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AISummarizerElement",
+          "declaration": {
+            "name": "AISummarizerElement",
+            "module": "./components/ai-summarizer"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AILanguageDetectorElement",
+          "declaration": {
+            "name": "AILanguageDetectorElement",
+            "module": "./components/ai-language-detector"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AIWriterElement",
+          "declaration": {
+            "name": "AIWriterElement",
+            "module": "./components/ai-writer"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AIRewriterElement",
+          "declaration": {
+            "name": "AIRewriterElement",
+            "module": "./components/ai-rewriter"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VERSION",
+          "declaration": {
+            "name": "VERSION",
+            "module": "src/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ai-language-detector.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "AILanguageDetectorElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "isLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "results",
+              "type": {
+                "text": "LanguageDetectorResult[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "isInitialized",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "detector",
+              "type": {
+                "text": "WebAILanguageDetector"
+              },
+              "privacy": "private",
+              "default": "new WebAILanguageDetector()"
+            },
+            {
+              "kind": "method",
+              "name": "setupEventListeners",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeDetector",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleDetect",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleTextInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getConfidenceClass",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "confidence",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "formatConfidence",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "confidence",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "formatLanguageName",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "code",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "detection-complete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "text-input",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "text"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ai-language-detector-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AILanguageDetectorElement",
+          "declaration": {
+            "name": "AILanguageDetectorElement",
+            "module": "src/components/ai-language-detector.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ai-language-detector-element",
+          "declaration": {
+            "name": "AILanguageDetectorElement",
+            "module": "src/components/ai-language-detector.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ai-rewriter.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "AIRewriterElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "context",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "context"
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "'as-is' | 'more-formal' | 'more-casual'"
+              },
+              "default": "'as-is'",
+              "attribute": "tone"
+            },
+            {
+              "kind": "field",
+              "name": "format",
+              "type": {
+                "text": "'plain-text' | 'markdown'"
+              },
+              "default": "'plain-text'",
+              "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "length",
+              "type": {
+                "text": "'shorter' | 'as-is' | 'longer'"
+              },
+              "default": "'as-is'",
+              "attribute": "length"
+            },
+            {
+              "kind": "field",
+              "name": "isLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "result",
+              "type": {
+                "text": "RewriterResult | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "isInitialized",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "availableTones",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "availableFormats",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "rewriter",
+              "type": {
+                "text": "WebAIRewriter"
+              },
+              "privacy": "private",
+              "default": "new WebAIRewriter()"
+            },
+            {
+              "kind": "method",
+              "name": "setupEventListeners",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeRewriter",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleRewrite",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleTextInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleContextInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleToneChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleFormatChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleLengthChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "rewriting-complete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "text"
+            },
+            {
+              "name": "context",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "context"
+            },
+            {
+              "name": "tone",
+              "type": {
+                "text": "'as-is' | 'more-formal' | 'more-casual'"
+              },
+              "default": "'as-is'",
+              "fieldName": "tone"
+            },
+            {
+              "name": "format",
+              "type": {
+                "text": "'plain-text' | 'markdown'"
+              },
+              "default": "'plain-text'",
+              "fieldName": "format"
+            },
+            {
+              "name": "length",
+              "type": {
+                "text": "'shorter' | 'as-is' | 'longer'"
+              },
+              "default": "'as-is'",
+              "fieldName": "length"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ai-rewriter-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AIRewriterElement",
+          "declaration": {
+            "name": "AIRewriterElement",
+            "module": "src/components/ai-rewriter.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ai-rewriter-element",
+          "declaration": {
+            "name": "AIRewriterElement",
+            "module": "src/components/ai-rewriter.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ai-summarizer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "AISummarizerElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'key-points' | 'tldr' | 'teaser' | 'headline'"
+              },
+              "default": "'tldr'",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "format",
+              "type": {
+                "text": "'markdown' | 'plain-text'"
+              },
+              "default": "'markdown'",
+              "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "length",
+              "type": {
+                "text": "'short' | 'medium' | 'long'"
+              },
+              "default": "'medium'",
+              "attribute": "length"
+            },
+            {
+              "kind": "field",
+              "name": "isLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "result",
+              "type": {
+                "text": "SummarizerResult | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "isInitialized",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "summarizer",
+              "type": {
+                "text": "WebAISummarizer"
+              },
+              "privacy": "private",
+              "default": "new WebAISummarizer()"
+            },
+            {
+              "kind": "method",
+              "name": "setupEventListeners",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeSummarizer",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleSummarize",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleTextInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleTypeChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleFormatChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleLengthChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "summarization-complete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "text-input",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "text"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'key-points' | 'tldr' | 'teaser' | 'headline'"
+              },
+              "default": "'tldr'",
+              "fieldName": "type"
+            },
+            {
+              "name": "format",
+              "type": {
+                "text": "'markdown' | 'plain-text'"
+              },
+              "default": "'markdown'",
+              "fieldName": "format"
+            },
+            {
+              "name": "length",
+              "type": {
+                "text": "'short' | 'medium' | 'long'"
+              },
+              "default": "'medium'",
+              "fieldName": "length"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ai-summarizer-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AISummarizerElement",
+          "declaration": {
+            "name": "AISummarizerElement",
+            "module": "src/components/ai-summarizer.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ai-summarizer-element",
+          "declaration": {
+            "name": "AISummarizerElement",
+            "module": "src/components/ai-summarizer.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ai-translator.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Universal AI Translator Web Component\nBuilt with Lit for maximum framework compatibility",
+          "name": "AITranslatorElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "sourceLanguage",
+              "type": {
+                "text": "string"
+              },
+              "default": "'auto'",
+              "attribute": "source-language"
+            },
+            {
+              "kind": "field",
+              "name": "targetLanguage",
+              "type": {
+                "text": "string"
+              },
+              "default": "'en'",
+              "attribute": "target-language"
+            },
+            {
+              "kind": "field",
+              "name": "autoTranslate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "auto-translate"
+            },
+            {
+              "kind": "field",
+              "name": "showInput",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "show-input"
+            },
+            {
+              "kind": "field",
+              "name": "showControls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "show-controls"
+            },
+            {
+              "kind": "field",
+              "name": "showOutput",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "show-output"
+            },
+            {
+              "kind": "field",
+              "name": "controlsOnly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "controls-only"
+            },
+            {
+              "kind": "field",
+              "name": "streaming",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "streaming"
+            },
+            {
+              "kind": "field",
+              "name": "resizable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "resizable"
+            },
+            {
+              "kind": "field",
+              "name": "allowCopy",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "allow-copy"
+            },
+            {
+              "kind": "field",
+              "name": "allowDownload",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "allow-download"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Enter text to translate...'",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "maxLength",
+              "type": {
+                "text": "number"
+              },
+              "default": "5000",
+              "attribute": "max-length"
+            },
+            {
+              "kind": "field",
+              "name": "downloadFileName",
+              "type": {
+                "text": "string"
+              },
+              "default": "'translation.md'",
+              "attribute": "download-filename"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "externalText",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "external-text"
+            },
+            {
+              "kind": "field",
+              "name": "inputText",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "translatedText",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "isLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "isSupported",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "translator",
+              "type": {
+                "text": "WebAITranslator | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "checkSupport",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeTranslator",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "cleanup",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleTranslate",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "handleExternalTranslation",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "autoTranslateTimeout",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleLanguageChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "renderInput",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "renderControls",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "renderOutput",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleCopy",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "translation-complete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "translation-error",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "translation-progress",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source-language",
+              "type": {
+                "text": "string"
+              },
+              "default": "'auto'",
+              "fieldName": "sourceLanguage"
+            },
+            {
+              "name": "target-language",
+              "type": {
+                "text": "string"
+              },
+              "default": "'en'",
+              "fieldName": "targetLanguage"
+            },
+            {
+              "name": "auto-translate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "autoTranslate"
+            },
+            {
+              "name": "show-input",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showInput"
+            },
+            {
+              "name": "show-controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showControls"
+            },
+            {
+              "name": "show-output",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showOutput"
+            },
+            {
+              "name": "controls-only",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "controlsOnly"
+            },
+            {
+              "name": "streaming",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "streaming"
+            },
+            {
+              "name": "resizable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "resizable"
+            },
+            {
+              "name": "allow-copy",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "allowCopy"
+            },
+            {
+              "name": "allow-download",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "allowDownload"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Enter text to translate...'",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "max-length",
+              "type": {
+                "text": "number"
+              },
+              "default": "5000",
+              "fieldName": "maxLength"
+            },
+            {
+              "name": "download-filename",
+              "type": {
+                "text": "string"
+              },
+              "default": "'translation.md'",
+              "fieldName": "downloadFileName"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "text"
+            },
+            {
+              "name": "external-text",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "externalText"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ai-translator-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AITranslatorElement",
+          "declaration": {
+            "name": "AITranslatorElement",
+            "module": "src/components/ai-translator.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ai-translator-element",
+          "declaration": {
+            "name": "AITranslatorElement",
+            "module": "src/components/ai-translator.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ai-writer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "AIWriterElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "prompt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "prompt"
+            },
+            {
+              "kind": "field",
+              "name": "context",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "context"
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "'formal' | 'casual'"
+              },
+              "default": "'casual'",
+              "attribute": "tone"
+            },
+            {
+              "kind": "field",
+              "name": "format",
+              "type": {
+                "text": "'plain-text' | 'markdown'"
+              },
+              "default": "'plain-text'",
+              "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "length",
+              "type": {
+                "text": "'short' | 'medium' | 'long'"
+              },
+              "default": "'medium'",
+              "attribute": "length"
+            },
+            {
+              "kind": "field",
+              "name": "isLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "result",
+              "type": {
+                "text": "WriterResult | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "isInitialized",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "availableTones",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "availableFormats",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "writer",
+              "type": {
+                "text": "WebAIWriter"
+              },
+              "privacy": "private",
+              "default": "new WebAIWriter()"
+            },
+            {
+              "kind": "method",
+              "name": "setupEventListeners",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeWriter",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleWrite",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handlePromptInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleContextInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleToneChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleFormatChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleLengthChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "writing-complete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "prompt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "prompt"
+            },
+            {
+              "name": "context",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "context"
+            },
+            {
+              "name": "tone",
+              "type": {
+                "text": "'formal' | 'casual'"
+              },
+              "default": "'casual'",
+              "fieldName": "tone"
+            },
+            {
+              "name": "format",
+              "type": {
+                "text": "'plain-text' | 'markdown'"
+              },
+              "default": "'plain-text'",
+              "fieldName": "format"
+            },
+            {
+              "name": "length",
+              "type": {
+                "text": "'short' | 'medium' | 'long'"
+              },
+              "default": "'medium'",
+              "fieldName": "length"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ai-writer-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AIWriterElement",
+          "declaration": {
+            "name": "AIWriterElement",
+            "module": "src/components/ai-writer.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ai-writer-element",
+          "declaration": {
+            "name": "AIWriterElement",
+            "module": "src/components/ai-writer.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

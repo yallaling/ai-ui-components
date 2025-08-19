@@ -1,5 +1,5 @@
 import { BaseComponentProps } from '../../types/common';
-import { AILanguageDetection } from '../../types/chrome-ai';
+import { AILanguageDetection } from '../../types/web-ai';
 
 export interface AILanguageDetectorProps extends BaseComponentProps {
   /**

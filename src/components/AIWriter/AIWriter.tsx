@@ -3,7 +3,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
   AIWriterSession,
-} from '../../types/chrome-ai';
+} from '../../types/web-ai';
 import AIResultDisplay from '../AIResultDisplay/AIResultDisplay';
 import './AIWriter.css';
 

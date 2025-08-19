@@ -1,7 +1,7 @@
 {
   "name": "@yallaling/ai-ui-components",
-  "version": "1.1.1",
-  "description": "A comprehensive TypeScript React component library for Chrome AI integration",
+  "version": "2.1.0",
+  "description": "A comprehensive TypeScript React component library for AI integration with secure, modern practices",
   "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -38,9 +38,9 @@
     "typescript",
     "components",
     "ui",
-    "chrome-ai",
     "ai",
-    "component-library"
+    "component-library",
+    "secure"
   ],
   "author": "Your Name",
   "license": "MIT",
@@ -108,6 +108,8 @@
   },
   "dependencies": {
     "@types/marked": "^5.0.2",
+    "@yallaling/web-ai-components": "^2.1.0",
+    "@yallaling/web-ai-core": "^2.1.0",
     "marked": "^16.1.2",
     "react-hot-toast": "^2.6.0",
     "react-markdown": "^10.1.0"
