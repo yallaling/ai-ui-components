@@ -25,7 +25,17 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm ci
+        cd packages/core && npm install
+        cd ../components && npm install
+        cd ../..
+    
+    - name: Build sub-packages
+      run: |
+        cd packages/core && npm run build
+        cd ../components && npm run build
+        cd ../..
     
     - name: Run type check
       run: npm run type-check
@@ -96,7 +106,17 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm ci
+        cd packages/core && npm install
+        cd ../components && npm install
+        cd ../..
+    
+    - name: Build sub-packages
+      run: |
+        cd packages/core && npm run build
+        cd ../components && npm run build
+        cd ../..
     
     - name: Build Storybook
       run: npm run build-storybook
