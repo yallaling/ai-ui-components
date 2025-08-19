@@ -1,6 +1,6 @@
 {
   "name": "@yallaling/ai-ui-components",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A comprehensive TypeScript React component library for AI integration with secure, modern practices",
   "type": "module",
   "main": "dist/cjs/index.js",
