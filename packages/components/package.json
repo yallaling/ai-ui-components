@@ -22,6 +22,26 @@
       "require": "./dist/cjs/components/ai-translator.js",
       "types": "./dist/types/components/ai-translator.d.ts"
     },
+    "./ai-summarizer": {
+      "import": "./dist/esm/components/ai-summarizer.js",
+      "require": "./dist/cjs/components/ai-summarizer.js",
+      "types": "./dist/types/components/ai-summarizer.d.ts"
+    },
+    "./ai-rewriter": {
+      "import": "./dist/esm/components/ai-rewriter.js",
+      "require": "./dist/cjs/components/ai-rewriter.js",
+      "types": "./dist/types/components/ai-rewriter.d.ts"
+    },
+    "./ai-language-detector": {
+      "import": "./dist/esm/components/ai-language-detector.js",
+      "require": "./dist/cjs/components/ai-language-detector.js",
+      "types": "./dist/types/components/ai-language-detector.d.ts"
+    },
+    "./ai-writer": {
+      "import": "./dist/esm/components/ai-writer.js",
+      "require": "./dist/cjs/components/ai-writer.js",
+      "types": "./dist/types/components/ai-writer.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "scripts": {
