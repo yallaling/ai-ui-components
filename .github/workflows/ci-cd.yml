@@ -49,10 +49,15 @@ jobs:
         ls -la dist/types/
         cd ../..
     
-    - name: Verify package linking
+    - name: Reinstall main dependencies after package builds
       run: |
         npm install
         ls -la node_modules/@yallaling/
+    
+    - name: Verify package linking
+      run: |
+        ls -la node_modules/@yallaling/
+        ls -la node_modules/@yallaling/web-ai-components/dist/
     
     - name: Run type check
       run: npm run type-check
@@ -147,10 +152,15 @@ jobs:
         ls -la dist/types/
         cd ../..
     
-    - name: Verify package linking
+    - name: Reinstall main dependencies after package builds
       run: |
         npm install
         ls -la node_modules/@yallaling/
+    
+    - name: Verify package linking
+      run: |
+        ls -la node_modules/@yallaling/
+        ls -la node_modules/@yallaling/web-ai-components/dist/
     
     - name: Build Storybook
       run: npm run build-storybook
