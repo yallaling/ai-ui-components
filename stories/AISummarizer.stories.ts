@@ -17,7 +17,17 @@ const meta: Meta<typeof AISummarizer> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A text summarization component using Chrome\'s built-in AI summarization API. Supports multiple summary types, formats, and lengths.',
+        component: `A text summarization component using Chrome's built-in AI summarization API. Supports multiple summary types, formats, and lengths.
+
+**Universal Component Available**: This component is also available as a framework-agnostic web component:
+\`\`\`bash
+npm install @yallaling/web-ai-components
+\`\`\`
+\`\`\`html
+<ai-summarizer-element></ai-summarizer-element>
+\`\`\`
+
+**Universal Usage**: Works in React, Vue, Angular, Svelte, and vanilla JavaScript. See the "Universal Components" section for cross-framework examples.`,
       },
     },
   },

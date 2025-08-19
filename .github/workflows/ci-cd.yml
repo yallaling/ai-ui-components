@@ -25,7 +25,39 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm ci
+        cd packages/core
+        npm install
+        cd ../components  
+        npm install
+        cd ../..
+    
+    - name: Build core package
+      run: |
+        cd packages/core
+        npm run build
+        cd ../..
+    
+    - name: Build components package  
+      run: |
+        cd packages/components
+        npm run build
+        ls -la dist/
+        ls -la dist/cjs/
+        ls -la dist/esm/
+        ls -la dist/types/
+        cd ../..
+    
+    - name: Reinstall main dependencies after package builds
+      run: |
+        npm install
+        ls -la node_modules/@yallaling/
+    
+    - name: Verify package linking
+      run: |
+        ls -la node_modules/@yallaling/
+        ls -la node_modules/@yallaling/web-ai-components/dist/
     
     - name: Run type check
       run: npm run type-check
@@ -50,34 +82,35 @@ jobs:
     - name: Build Storybook
       run: npm run build-storybook
 
-  release:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18.x'
-        cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
-    
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Build library
-      run: npm run build
-    
-    - name: Publish to npm
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  # Disable automatic publishing since packages are manually published
+  # release:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+  #   
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v4
+  #     with:
+  #       fetch-depth: 0
+  #   
+  #   - name: Setup Node.js
+  #     uses: actions/setup-node@v4
+  #     with:
+  #       node-version: '20.x'
+  #       cache: 'npm'
+  #       registry-url: 'https://registry.npmjs.org'
+  #   
+  #   - name: Install dependencies
+  #     run: npm ci
+  #   
+  #   - name: Build library
+  #     run: npm run build
+  #   
+  #   - name: Publish to npm
+  #     run: npm publish
+  #     env:
+  #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   deploy-storybook:
     needs: test
@@ -91,11 +124,43 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18.x'
+        node-version: '20.x'
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm ci
+        cd packages/core
+        npm install
+        cd ../components  
+        npm install
+        cd ../..
+    
+    - name: Build core package
+      run: |
+        cd packages/core
+        npm run build
+        cd ../..
+    
+    - name: Build components package  
+      run: |
+        cd packages/components
+        npm run build
+        ls -la dist/
+        ls -la dist/cjs/
+        ls -la dist/esm/
+        ls -la dist/types/
+        cd ../..
+    
+    - name: Reinstall main dependencies after package builds
+      run: |
+        npm install
+        ls -la node_modules/@yallaling/
+    
+    - name: Verify package linking
+      run: |
+        ls -la node_modules/@yallaling/
+        ls -la node_modules/@yallaling/web-ai-components/dist/
     
     - name: Build Storybook
       run: npm run build-storybook

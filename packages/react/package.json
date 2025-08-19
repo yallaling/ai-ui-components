@@ -1,0 +1,65 @@
+{
+  "name": "@yallaling/ai-ui-components",
+  "version": "2.0.0",
+  "description": "React wrapper components for universal Chrome AI Web Components",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "npm run build:types && npm run build:esm && npm run build:cjs",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
+    "build:esm": "tsc --module es2020 --outDir dist/esm --target es2020",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs --target es2017",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "react",
+    "chrome-ai",
+    "ai",
+    "translation",
+    "summarization",
+    "web-components",
+    "typescript"
+  ],
+  "author": "Yallaling Goudar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yallaling/ai-ui-components.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/yallaling/ai-ui-components#readme",
+  "bugs": {
+    "url": "https://github.com/yallaling/ai-ui-components/issues"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@yallaling/web-ai-components": "file:../components"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

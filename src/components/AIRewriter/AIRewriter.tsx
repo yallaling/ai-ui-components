@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Chrome AI APIs are experimental and require 'any' types for global access
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import {
-  AIRewriterSession,
-} from '../../types/chrome-ai';
+import { AIRewriterSession } from '../../types/web-ai';
 import AIResultDisplay from '../AIResultDisplay/AIResultDisplay';
 import './AIRewriter.css';
 

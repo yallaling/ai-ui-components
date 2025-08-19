@@ -1,0 +1,91 @@
+{
+  "name": "@yallaling/web-ai-components",
+  "version": "2.1.0",
+  "description": "Universal Web AI Web Components built with Lit and secure practices",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "custom-elements.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./ai-translator": {
+      "import": "./dist/esm/components/ai-translator.js",
+      "require": "./dist/cjs/components/ai-translator.js",
+      "types": "./dist/types/components/ai-translator.d.ts"
+    },
+    "./ai-summarizer": {
+      "import": "./dist/esm/components/ai-summarizer.js",
+      "require": "./dist/cjs/components/ai-summarizer.js",
+      "types": "./dist/types/components/ai-summarizer.d.ts"
+    },
+    "./ai-rewriter": {
+      "import": "./dist/esm/components/ai-rewriter.js",
+      "require": "./dist/cjs/components/ai-rewriter.js",
+      "types": "./dist/types/components/ai-rewriter.d.ts"
+    },
+    "./ai-language-detector": {
+      "import": "./dist/esm/components/ai-language-detector.js",
+      "require": "./dist/cjs/components/ai-language-detector.js",
+      "types": "./dist/types/components/ai-language-detector.d.ts"
+    },
+    "./ai-writer": {
+      "import": "./dist/esm/components/ai-writer.js",
+      "require": "./dist/cjs/components/ai-writer.js",
+      "types": "./dist/types/components/ai-writer.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "npm run build:types && npm run build:esm && npm run build:cjs && npm run build:manifest",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
+    "build:esm": "tsc --module es2020 --outDir dist/esm --target es2020",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs --target es2017",
+    "build:manifest": "cem analyze --litelement --globs \"src/**/*.ts\"",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist custom-elements.json",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "web-ai",
+    "browser-ai",
+    "ai",
+    "web-components",
+    "lit",
+    "universal",
+    "translation",
+    "summarization",
+    "secure"
+  ],
+  "author": "Yallaling Goudar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yallaling/web-ai-components.git",
+    "directory": "packages/components"
+  },
+  "homepage": "https://github.com/yallaling/web-ai-components#readme",
+  "bugs": {
+    "url": "https://github.com/yallaling/web-ai-components/issues"
+  },
+  "dependencies": {
+    "lit": "^3.2.0",
+    "@yallaling/web-ai-core": "file:../core"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@custom-elements-manifest/analyzer": "^0.10.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "customElements": "custom-elements.json"
+}

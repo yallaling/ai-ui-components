@@ -179,7 +179,7 @@ const AIPrompt: React.FC<AIPromptProps> = ({
           );
         }
 
-        // Rewriter API uses capabilities() method 
+        // Rewriter API uses capabilities() method
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const availabilityResult = await (self as any).Rewriter.capabilities();
 

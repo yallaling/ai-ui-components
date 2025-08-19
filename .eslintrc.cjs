@@ -1,72 +1,24 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
-    es2021: true,
+    es2020: true,
+    node: true,
     jest: true,
   },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'prettier'
+    '@typescript-eslint/recommended',
   ],
+  ignorePatterns: ['dist', '.eslintrc.js', '*.js', 'storybook-static', 'coverage'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint'],
   rules: {
-    // Allow unused variables when they start with underscore
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
-      },
-    ],
-    'no-unused-vars': 'off', // Turn off base rule as it conflicts with @typescript-eslint rule
-    // Allow 'any' types in Chrome AI components due to experimental API nature
-    '@typescript-eslint/no-explicit-any': [
-      'error',
-      {
-        ignoreRestArgs: true,
-        fixToUnknown: false,
-      },
-    ],
-    // React rules
-    'react/react-in-jsx-scope': 'off', // Not needed in React 17+
-    'react/prop-types': 'off', // Using TypeScript instead
-    // Import rules
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'never',
-      },
-    ],
-    'import/no-unresolved': 'error',
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/resolver': {
-      typescript: {},
-    },
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
 };

@@ -1,8 +1,8 @@
-# Chrome AI Components
+# Web AI Components
 
-A comprehensive TypeScript React component library for Chrome AI integration, built with modern tools and best practices.
+A comprehensive TypeScript React component library for Web AI integration, built with modern tools, security-first practices, and universal compatibility.
 
-> ⚠️ **Chrome Version Requirement**: This library requires **Chrome 138+** to access the experimental Chrome AI APIs. Make sure you're using a compatible browser version.
+> ⚠️ **Browser Compatibility**: This library works with modern browsers that support Web AI APIs. Tested with latest browser versions with AI capabilities enabled.
 
 ## ✨ Latest Features (v1.1.0)
 
