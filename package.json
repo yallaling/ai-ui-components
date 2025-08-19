@@ -108,8 +108,8 @@
   },
   "dependencies": {
     "@types/marked": "^5.0.2",
-    "@yallaling/web-ai-components": "^2.1.0",
-    "@yallaling/web-ai-core": "^2.1.0",
+    "@yallaling/web-ai-components": "file:./packages/components",
+    "@yallaling/web-ai-core": "file:./packages/core",
     "marked": "^16.1.2",
     "react-hot-toast": "^2.6.0",
     "react-markdown": "^10.1.0"
