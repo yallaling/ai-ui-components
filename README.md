@@ -1,21 +1,43 @@
-# Web AI Components
+# AI UI Components
 
-A comprehensive TypeScript React component library for Web AI integration, built with modern tools, security-first practices, and universal compatibility.
+A comprehensive TypeScript React component library for Web AI integration, built with modern tools, security-first practices, and **universal compatibility across all frameworks**.
 
 > ⚠️ **Browser Compatibility**: This library works with modern browsers that support Web AI APIs. Tested with latest browser versions with AI capabilities enabled.
 
-## ✨ Latest Features (v1.1.0)
+## 🆕 Latest Features (v2.2.0)
 
-- 📏 **Dynamic Sizing** - Customizable width/height with `resizable` option
+### 🌍 **Universal Components Architecture**
+- **Framework-Agnostic**: Components work in React, Vue, Angular, Svelte, and vanilla JavaScript
+- **Zero Framework Lock-in**: Same components, same API, any framework
+- **Universal Web Components**: Built with Lit Elements for maximum compatibility
+
+### � **Enhanced CI/CD & Development**
+- **GitHub Actions**: Automated testing, building, and Storybook deployment
+- **Fixed Package Resolution**: Resolved monorepo build issues in CI/CD environments
+- **Improved ESLint**: Better TypeScript and React compatibility
+- **Storybook Deployment**: Automatic deployment to GitHub Pages
+
+### 📦 **Three Package Architecture**
+
+| Package | Purpose | Framework Support |
+|---------|---------|------------------|
+| `@yallaling/web-ai-core` | Core AI logic & utilities | ✅ Framework-agnostic |
+| `@yallaling/web-ai-components` | Universal web components | ✅ React, Vue, Angular, Svelte, Vanilla JS |
+| `@yallaling/ai-ui-components` | React-specific components | ✅ React only |
+
+## ✨ Component Features
+
+- �📏 **Dynamic Sizing** - Customizable width/height with `resizable` option
 - 📝 **Rich Markdown Output** - Beautiful ReactMarkdown rendering for AI results  
 - 📋 **Copy & Download** - One-click copy to clipboard and download as `.md` files
 - 🍞 **Toast Notifications** - Success feedback for user actions
 - 📱 **Responsive Design** - Components adapt to all screen sizes
 - ♿ **Accessibility** - WCAG compliant with proper ARIA labels
+- 🌍 **Universal Compatibility** - Same components work across all frameworks
 
-## Features
+## 🚀 Framework-Agnostic Features
 
-- 🚀 **Modern Build Setup** - TypeScript, Rollup, and tree-shaking support
+- 🎯 **Modern Build Setup** - TypeScript, Rollup, and tree-shaking support
 - 📚 **Storybook Integration** - Component documentation and testing
 - 🧪 **Testing Ready** - Jest and React Testing Library setup
 - 🎨 **Code Quality** - ESLint and Prettier configuration
@@ -23,15 +45,209 @@ A comprehensive TypeScript React component library for Web AI integration, built
 - 🔄 **CI/CD Ready** - GitHub Actions workflow included
 - 🌲 **Tree Shakeable** - Supports both CommonJS and ES modules
 
-## Installation
+## 📦 Installation
 
+### React-Only Installation
 ```bash
 npm install @yallaling/ai-ui-components
-# or
-yarn add @yallaling/ai-ui-components
 ```
 
-## Quick Start
+### Universal Components (All Frameworks)
+```bash
+# Core utilities
+npm install @yallaling/web-ai-core
+
+# Universal web components (works everywhere)
+npm install @yallaling/web-ai-components
+```
+
+### Framework-Specific Examples
+```bash
+# React project
+npm install @yallaling/ai-ui-components
+
+# Vue/Angular/Svelte/Vanilla JS project
+npm install @yallaling/web-ai-components @yallaling/web-ai-core
+```
+
+## 🚀 Usage
+
+### React Components (React Projects)
+
+```tsx
+import React, { useState } from 'react';
+import { 
+  AITranslator, 
+  AISummarizer, 
+  AILanguageDetector,
+  AIWriter,
+  AIRewriter 
+} from '@yallaling/ai-ui-components';
+
+function App() {
+  return (
+    <div>
+      <AITranslator
+        width="100%"
+        height="400px"
+        resizable
+        defaultSourceLanguage="en"
+        defaultTargetLanguage="es"
+      />
+      
+      <AISummarizer
+        width="100%"
+        height="300px"
+        defaultMaxWords={100}
+      />
+      
+      <AILanguageDetector
+        width="100%"
+        height="200px"
+      />
+    </div>
+  );
+}
+```
+
+### Universal Web Components (Any Framework)
+
+#### Vanilla JavaScript
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import '@yallaling/web-ai-components';
+  </script>
+</head>
+<body>
+  <ai-translator-element
+    width="100%"
+    height="400px"
+    resizable="true"
+    default-source-language="en"
+    default-target-language="es">
+  </ai-translator-element>
+  
+  <ai-summarizer-element
+    width="100%"
+    height="300px"
+    default-max-words="100">
+  </ai-summarizer-element>
+  
+  <ai-language-detector-element
+    width="100%"
+    height="200px">
+  </ai-language-detector-element>
+</body>
+</html>
+```
+
+#### Vue 3
+```vue
+<template>
+  <div>
+    <ai-translator-element
+      width="100%"
+      height="400px"
+      :resizable="true"
+      default-source-language="en"
+      default-target-language="es"
+      @translation-complete="handleTranslation"
+    />
+    
+    <ai-summarizer-element
+      width="100%"
+      height="300px"
+      :default-max-words="100"
+      @summary-complete="handleSummary"
+    />
+  </div>
+</template>
+
+<script setup>
+import '@yallaling/web-ai-components';
+
+const handleTranslation = (event) => {
+  console.log('Translation result:', event.detail);
+};
+
+const handleSummary = (event) => {
+  console.log('Summary result:', event.detail);
+};
+</script>
+```
+
+#### Angular
+```typescript
+// app.component.ts
+import { Component, AfterViewInit } from '@angular/core';
+import '@yallaling/web-ai-components';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <ai-translator-element
+      width="100%"
+      height="400px"
+      [attr.resizable]="true"
+      default-source-language="en"
+      default-target-language="es"
+      (translation-complete)="onTranslation($event)">
+    </ai-translator-element>
+    
+    <ai-summarizer-element
+      width="100%"
+      height="300px"
+      [attr.default-max-words]="100"
+      (summary-complete)="onSummary($event)">
+    </ai-summarizer-element>
+  `
+})
+export class AppComponent {
+  onTranslation(event: CustomEvent) {
+    console.log('Translation:', event.detail);
+  }
+  
+  onSummary(event: CustomEvent) {
+    console.log('Summary:', event.detail);
+  }
+}
+```
+
+#### Svelte
+```svelte
+<script>
+  import '@yallaling/web-ai-components';
+  
+  function handleTranslation(event) {
+    console.log('Translation result:', event.detail);
+  }
+  
+  function handleSummary(event) {
+    console.log('Summary result:', event.detail);
+  }
+</script>
+
+<ai-translator-element
+  width="100%"
+  height="400px"
+  resizable="true"
+  default-source-language="en"
+  default-target-language="es"
+  on:translation-complete={handleTranslation}
+/>
+
+<ai-summarizer-element
+  width="100%"
+  height="300px"
+  default-max-words="100"
+  on:summary-complete={handleSummary}
+/>
+```
+
+## React Legacy Example (Chat Components)
 
 ```tsx
 import React, { useState } from 'react';
@@ -200,7 +416,171 @@ function AdvancedAIApp() {
 ```
 ```
 
-## Components
+## 🧩 Available Components
+
+### Universal AI Components (All Frameworks)
+
+| Component | React | Universal Element | Description |
+|-----------|--------|-------------------|-------------|
+| Translator | `<AITranslator />` | `<ai-translator-element>` | Translate text between languages |
+| Summarizer | `<AISummarizer />` | `<ai-summarizer-element>` | Summarize long text content |
+| Language Detector | `<AILanguageDetector />` | `<ai-language-detector-element>` | Detect language of input text |
+| Writer | `<AIWriter />` | `<ai-writer-element>` | AI-powered content writing assistant |
+| Rewriter | `<AIRewriter />` | `<ai-rewriter-element>` | Rewrite and improve existing text |
+
+### React-Only Components
+
+| Component | Element | Description |
+|-----------|---------|-------------|
+| Chat Interface | `<AIChat />` | Complete chat interface with message history |
+| AI Prompt | `<AIPrompt />` | Simple AI prompt input/output component |
+| Button | `<Button />` | Versatile button with multiple variants |
+| Loading Spinner | `<LoadingSpinner />` | Animated loading indicator |
+
+## 🔧 Component Props & Features
+
+### Universal AI Component Features
+All universal AI components support these common props:
+
+- `width` - Component width (string, e.g., "100%", "400px")
+- `height` - Component height (string, e.g., "300px", "auto")
+- `resizable` - Enable drag-to-resize functionality (boolean)
+- `theme` - Light/dark theme support
+- **Markdown Rendering** - Rich output formatting
+- **Copy to Clipboard** - One-click copying
+- **Download Results** - Save as `.md` files
+- **Toast Notifications** - User feedback
+- **Accessibility** - WCAG compliant
+
+### AITranslator / ai-translator-element
+
+```tsx
+// React
+<AITranslator
+  width="100%"
+  height="400px"
+  resizable
+  defaultSourceLanguage="en"
+  defaultTargetLanguage="es"
+  onTranslationComplete={(result) => console.log(result)}
+/>
+
+// Universal
+<ai-translator-element
+  width="100%"
+  height="400px"
+  resizable="true"
+  default-source-language="en"
+  default-target-language="es"
+  @translation-complete="handleTranslation"
+></ai-translator-element>
+```
+
+**Props:**
+- `defaultSourceLanguage`: Default source language code (e.g., "en", "es", "fr")
+- `defaultTargetLanguage`: Default target language code
+- `onTranslationComplete` / `@translation-complete`: Callback when translation finishes
+
+### AISummarizer / ai-summarizer-element
+
+```tsx
+// React
+<AISummarizer
+  width="100%"
+  height="300px"
+  defaultMaxWords={100}
+  defaultSummaryType="bullet-points"
+  onSummaryComplete={(result) => console.log(result)}
+/>
+
+// Universal
+<ai-summarizer-element
+  width="100%"
+  height="300px"
+  default-max-words="100"
+  default-summary-type="bullet-points"
+  @summary-complete="handleSummary"
+></ai-summarizer-element>
+```
+
+**Props:**
+- `defaultMaxWords`: Maximum words in summary (number)
+- `defaultSummaryType`: "paragraph" | "bullet-points" | "key-insights"
+- `onSummaryComplete` / `@summary-complete`: Callback when summary finishes
+
+### AILanguageDetector / ai-language-detector-element
+
+```tsx
+// React
+<AILanguageDetector
+  width="100%"
+  height="200px"
+  onDetectionComplete={(result) => console.log(result)}
+/>
+
+// Universal
+<ai-language-detector-element
+  width="100%"
+  height="200px"
+  @detection-complete="handleDetection"
+></ai-language-detector-element>
+```
+
+**Props:**
+- `onDetectionComplete` / `@detection-complete`: Callback when detection finishes
+
+### AIWriter / ai-writer-element
+
+```tsx
+// React
+<AIWriter
+  width="100%"
+  height="400px"
+  defaultWritingStyle="professional"
+  defaultContentType="blog-post"
+  onWritingComplete={(result) => console.log(result)}
+/>
+
+// Universal
+<ai-writer-element
+  width="100%"
+  height="400px"
+  default-writing-style="professional"
+  default-content-type="blog-post"
+  @writing-complete="handleWriting"
+></ai-writer-element>
+```
+
+**Props:**
+- `defaultWritingStyle`: "professional" | "casual" | "creative" | "technical"
+- `defaultContentType`: "blog-post" | "email" | "article" | "social-media"
+- `onWritingComplete` / `@writing-complete`: Callback when writing finishes
+
+### AIRewriter / ai-rewriter-element
+
+```tsx
+// React
+<AIRewriter
+  width="100%"
+  height="400px"
+  defaultRewriteStyle="improve-clarity"
+  onRewriteComplete={(result) => console.log(result)}
+/>
+
+// Universal
+<ai-rewriter-element
+  width="100%"
+  height="400px"
+  default-rewrite-style="improve-clarity"
+  @rewrite-complete="handleRewrite"
+></ai-rewriter-element>
+```
+
+**Props:**
+- `defaultRewriteStyle`: "improve-clarity" | "make-shorter" | "make-longer" | "simplify"
+- `onRewriteComplete` / `@rewrite-complete`: Callback when rewriting finishes
+
+## Legacy React Components
 
 ### Button
 A versatile button component with multiple variants and sizes.
@@ -448,12 +828,12 @@ function SettingsComponent() {
 }
 ```
 
-## Development
+## 🛠️ Development
 
 ### Prerequisites
 - Node.js 20+
 - npm 10+
-- Chrome 138+ (for AI features)
+- Chrome 138+ (for Web AI features)
 
 ### Setup
 ```bash
@@ -464,26 +844,67 @@ cd ai-ui-components
 # Install dependencies
 npm install
 
-# Start Storybook
-npm run storybook
+# Start development
+npm run storybook  # Starts on http://localhost:6006
 
 # Run tests
 npm test
 
-# Build the library
+# Build all packages
 npm run build
 ```
 
+### 🏗️ Monorepo Structure
+
+This project uses a monorepo structure with multiple packages:
+
+```
+├── packages/
+│   ├── core/                 # @yallaling/web-ai-core
+│   ├── components/           # @yallaling/web-ai-components
+│   └── react/                # React-specific components
+├── src/                      # Main React library
+├── stories/                  # Storybook documentation
+└── .github/workflows/        # CI/CD automation
+```
+
+### 🔄 CI/CD Pipeline
+
+**Automated GitHub Actions:**
+- ✅ **Build & Test**: Runs on every PR and push
+- ✅ **Storybook Deployment**: Auto-deploys to GitHub Pages
+- ✅ **Package Publishing**: Automated npm publishing
+- ✅ **Cross-Platform Testing**: Tests on multiple Node versions
+
+**Workflows:**
+- `.github/workflows/ci.yml` - Build, test, and deploy pipeline
+- Automatic Storybook deployment to `https://yallaling.github.io/ai-ui-components/`
+
 ### Scripts
-- `npm run build` - Build the library for production
+- `npm run build` - Build all packages for production
 - `npm run dev` - Build in watch mode
-- `npm test` - Run tests
+- `npm test` - Run tests with coverage
 - `npm run test:watch` - Run tests in watch mode
-- `npm run test:coverage` - Run tests with coverage
-- `npm run lint` - Lint the code
-- `npm run format` - Format the code
-- `npm run storybook` - Start Storybook
+- `npm run lint` - Lint all code
+- `npm run format` - Format all code
+- `npm run storybook` - Start Storybook (port 6006)
 - `npm run build-storybook` - Build Storybook for deployment
+
+### 📦 Publishing
+
+**Automated Publishing:**
+```bash
+# Bump version and publish
+npm version patch  # or minor, major
+git push origin main --tags
+# GitHub Actions automatically publishes to npm
+```
+
+**Manual Publishing:**
+```bash
+npm run build
+npm publish
+```
 
 ## Project Structure
 
