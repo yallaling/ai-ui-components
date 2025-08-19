@@ -1,6 +1,5 @@
 # Build outputs
 dist/
-!packages/*/dist/
 build/
 *.tsbuildinfo
 

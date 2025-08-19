@@ -61,7 +61,9 @@ export interface AITranslatorProps extends BaseComponentProps {
    * Function to trigger translation externally
    */
   onTranslatorReady?: (
-    translateFunction: (data?: string | object | number | boolean) => Promise<void>
+    translateFunction: (
+      data?: string | object | number | boolean
+    ) => Promise<void>
   ) => void;
   /**
    * Controls-only mode - hides input UI and uses external data

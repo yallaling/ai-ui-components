@@ -113,6 +113,8 @@ export interface AISummarizerProps extends BaseComponentProps {
    * Function to trigger summarization externally
    */
   onSummarizerReady?: (
-    summarizeFunction: (data?: string | object | number | boolean) => Promise<void>
+    summarizeFunction: (
+      data?: string | object | number | boolean
+    ) => Promise<void>
   ) => void;
 }
